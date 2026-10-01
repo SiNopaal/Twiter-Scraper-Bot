@@ -113,11 +113,17 @@ python master_crypto_bot.py -a fannettt
 
 ### 📌 2. Menjalankan Engine Secara Terpisah (CLI Standalone)
 
-#### A. Giveaway Hunter (Drop Address SOL, EVM, BASE):
+#### A. Giveaway Hunter & Scraper (Drop Address SOL, EVM, BASE):
 ```bash
-# Jalankan untuk akun tertentu (looping kontinu, jeda 5 menit antar siklus, delay entri 10-30 detik):
-python browser_hunter.py -a fannettt -c all -m 10 --hours 24 --loop --interval 5 --delay-min 10 --delay-max 30
+# 1. Scrape & temukan giveaway valid terkini (kategori: ALL, EVM, SOLANA):
+python giveaway_engine.py -c ALL -m 10
 
+# 2. Scrape sekaligus otomatis ikutan (Like + RT + Follow + Drop Wallet):
+python giveaway_engine.py -c ALL -m 10 --auto-enter
+
+# 3. Looping perburuan giveaway terus-menerus:
+python browser_hunter.py -a fannettt -c all -m 10 --hours 24 --loop --interval 5 --delay-min 10 --delay-max 30
+```
 # Opsi parameter:
 # -a, --account    : Target akun di accounts.json (contoh: fannettt)
 # -c, --category   : Kategori target (all = SOL, EVM, BASE; solana; evm)
